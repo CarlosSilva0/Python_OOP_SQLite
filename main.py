@@ -10,11 +10,27 @@ print(poyatos)
 #Quero mostrar só o nome
 print(poyatos.nome)
 
-#Chama o objeto de banco de dados
-db = Database() 
+print("DAQUI PRA FRENTE É ACESSO AO BANCO...")
 
-pessoaDAO= PessoaDAO(db.conexao, db.cursor)
-pessoas = pessoaDAO.getall()
+#Chama o objeto de banco de dados
+db = Database()
+
+#Instancia o objeto
+pessoaDAO = PessoaDAO(db.conexao, db.cursor)
+
+#Quero carregar uma lista com o que veio do banco de dados
+pessoas = pessoaDAO.getAll(orderBy=True)
 for pessoa in pessoas:
   print(pessoa)
 
+
+#Criar um objeto com qualquer ator/atriz/diretor/diretora
+novo = Pessoa(0, "Denzel Washington")
+
+#Olha que simples...
+novo = pessoaDAO.save(novo)
+
+#consulta o banco de novo..
+pessoas = pessoaDAO.getAll(orderBy=True)
+for pessoa in pessoas:
+  print(pessoa)
