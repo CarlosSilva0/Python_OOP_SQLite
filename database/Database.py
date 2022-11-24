@@ -10,5 +10,6 @@ class Database:
         self.cursor = self.conexao.cursor()
 
     def __del__(self):
-        self.conexao.commit()
+        self.conexao.commit() 
+      
       
